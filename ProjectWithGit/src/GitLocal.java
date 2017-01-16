@@ -11,7 +11,7 @@ public class GitLocal {
 		System.out.println ("Fun with Git!");
 		int a = 10;
 		int b = 4;
-		
+		System.out.println (a + b);
 	}
 	// SID IS HERE WHATTTTTTTTTT
 	//You don't need upper case character
