@@ -15,6 +15,7 @@ public class GitLocal {
 	// SID IS HERE WHATTTTTTTTTT
 	//You don't need upper case character
 	// hihihihihi
+	//our ta seems nice
 	//IMA DROP 1090
 	//https://github.com/eric1610/EECS_2311
 	//https://github.com/eric1610/EECS_2311
