@@ -16,12 +16,7 @@ public class GitLocal {
 	//You don't need upper case character
 	// hihihihihi
 	//our ta seems nice
-	asdf
-	as
-	asdfasdfasd
-	df
-	sadf
-	asdf
+	//asdfasdfsadfasdfasd
 	//IMA DROP 1090
 	//https://github.com/eric1610/EECS_2311
 	//https://github.com/eric1610/EECS_2311
