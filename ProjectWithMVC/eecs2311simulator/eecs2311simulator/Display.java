@@ -32,7 +32,7 @@ public class Display extends Application {
 	 
 	            @Override
 	            public void handle(ActionEvent event) {
-	             //   System.out.println("Hello World Today!");
+	             //   System.out.println("Hello World Today World!");
 	            	text.setText("Wrong");
 	            }
 	        });
