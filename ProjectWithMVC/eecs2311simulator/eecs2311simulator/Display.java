@@ -12,31 +12,26 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-public class Display extends Application {
+public class Display extends Application 
+{
 
-	 public static void main(String[] args) {
+	 private String answer;
+	 public static void main(String[] args) 
+	 {
 	        launch(args);
 	    }
 	    
 	    @Override
-	    public void start(Stage primaryStage) {
+	    public void start(Stage primaryStage) throws InterruptedException
+	    {
 	        primaryStage.setTitle("Hello World!");
 	        Button btn = new Button();
 	        Button btn1 = new Button ();
 	        Button btn2 = new Button ();
-	        TextField text = new TextField ("Correct!");
-	/*        btn.setOnAction(new EventHandler<ActionEvent>() {
-	 
-	            @Override
-	            public void handle(ActionEvent event) {
-	            	text.setText("Wrong");
-	            }
-	        }); */
-	        
+	        TextField text = new TextField ();
 	        StackPane root = new StackPane();
 	        Canvas canvas = new Canvas (120, 180);
 	        GraphicsContext gc = canvas.getGraphicsContext2D ();
-	 //       drawShapes (gc);
 	        btn.setPrefSize(100, 100);
 	        btn1.setPrefSize(100, 100);
 	        btn2.setPrefSize(100, 100);
@@ -45,9 +40,6 @@ public class Display extends Application {
 	        root.getChildren().add(btn2);
 	        root.getChildren().add(canvas);
 	        root.getChildren().add(text);
-	  //      btn.setText("Option 1");
-	  //      btn1.setText("Option 2");
-	  //      btn2.setText("Option 3");
 	        StackPane.setAlignment(canvas,Pos.CENTER);
 	        StackPane.setAlignment(btn,Pos.BOTTOM_LEFT);
 	        StackPane.setAlignment(btn1,Pos.BOTTOM_CENTER);
@@ -55,22 +47,58 @@ public class Display extends Application {
 	        StackPane.setAlignment(text, Pos.TOP_CENTER);
 	        primaryStage.setScene(new Scene(root, 650, 600));
 	        primaryStage.show();
-	        activate (gc, btn, btn1, btn2);
+	        activate (gc, btn, btn1, btn2, text);
 	        btn.setOnAction(new EventHandler<ActionEvent>() {
 	       	 
 	            @Override
 	            public void handle(ActionEvent event) {
-	            	text.setText("Wrong");
+	            	if (btn.getText().equals(getAnswer()))
+	            	{
+	            		text.setText("Correct!");
+	            	}
+	            	else
+	            	{
+	            		text.setText("Incorrect! Unfortunately the correct answer was: " + getAnswer());
+	            	}
+	            }
+	        });
+	        btn1.setOnAction(new EventHandler<ActionEvent>() {
+		       	 
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	if (btn1.getText().equals(getAnswer()))
+	            	{
+	            		text.setText("Correct!");
+	            	}
+	            	else
+	            	{
+	            		text.setText("Incorrect! Unfortunately the correct answer was: " + getAnswer());
+	            	}
+	            }
+	        });
+	        btn2.setOnAction(new EventHandler<ActionEvent>() {
+		       	 
+	            @Override
+	            public void handle(ActionEvent event) {
+	            	if (btn2.getText().equals(getAnswer()))
+	            	{
+	            		text.setText("Correct!");
+	            	}
+	            	else
+	            	{
+	            		text.setText("Incorrect! Unfortunately the correct answer was: " + getAnswer());
+	            	}
 	            }
 	        });
 	    }
 	    
-	    private void activate (GraphicsContext gc, Button btn, Button btn1, Button btn2)
+	    private void activate (GraphicsContext gc, Button btn, Button btn1, Button btn2, TextField text)
 	    {
+	    	String [] brailleOptions = Braille.getChoices();
+	    	gc.clearRect (0, 0, 120, 180);
 	    	gc.setFill(Color.PLUM);
 	        gc.setStroke(Color.BLUE);
 	        gc.setLineWidth(5);
-	    	String [] brailleOptions = Braille.getChoices();
 	    	if (brailleOptions[0].substring(0, 2).equals("00"))
 	    	{
 	    		gc.strokeOval(10, 5, 40, 40);
@@ -132,11 +160,19 @@ public class Display extends Application {
 		    	gc.fillOval(10, 125, 40, 40);
 		    	gc.fillOval(72, 128, 37, 37);
 		    }
-	    	btn.setText (brailleOptions[1]);
-	    	btn1.setText (brailleOptions [2]);
-	    	btn2.setText (brailleOptions [3]);
+	    	btn.setText(Braille.convert(brailleOptions[1]));
+	    	btn1.setText(Braille.convert(brailleOptions[2]));
+	    	btn2.setText(Braille.convert(brailleOptions[3]));
+	    	text.setText("What is your choice?");
+	    	answer = Braille.convert(brailleOptions[0]);
 	    }
-	    private void drawShapes (GraphicsContext gc) 
+	    
+	    private String getAnswer ()
+	    {
+	    	return answer;
+	    }
+	  
+/*	    private void drawShapes (GraphicsContext gc) 
 	    {
 	    	gc.setFill(Color.GREEN);
 	        gc.setStroke(Color.BLUE);
@@ -148,5 +184,5 @@ public class Display extends Application {
 	        gc.strokeOval(72, 68, 37, 37);
 	        gc.fillOval(10, 125, 40, 40);
 	        gc.strokeOval(72, 128, 37, 37);
-	    }
+	    } */
 }
