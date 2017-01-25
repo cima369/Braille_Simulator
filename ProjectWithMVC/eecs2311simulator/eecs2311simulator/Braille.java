@@ -4,17 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class Braille {
-	/*private String a = "100000";
-	private String b = "101000";
-	private String c = "110000";
-	private String d = "110100";
-	private String e = "100100";
-	private String f = "111000";
-	private String g = "111100";
-	private String h = "101100";
-	private String i = "011000";
-	private String j = "011100"; 
-	private String k = "100010";  */
+
 	
 	//Meant to be private
 	private Braille() 

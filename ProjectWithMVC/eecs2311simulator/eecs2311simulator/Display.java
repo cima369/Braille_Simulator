@@ -24,12 +24,7 @@ public class Display extends Application {
 	        Button btn = new Button();
 	        Button btn1 = new Button ();
 	        Button btn2 = new Button ();
-//	        String [] brailleOptions = Braille.getChoices();
 	        TextField text = new TextField ("Correct!");
-	        
-	/*      btn.setText("Option 1");
-	        btn1.setText("Option 2");
-	        btn2.setText("Option 3"); */
 	/*        btn.setOnAction(new EventHandler<ActionEvent>() {
 	 
 	            @Override

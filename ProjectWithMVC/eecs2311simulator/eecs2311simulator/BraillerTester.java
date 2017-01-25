@@ -16,7 +16,6 @@ public class BraillerTester {
 		String [] testing = Braille.getChoices ();
 		assertTrue("Yes it works! Answer: " + testing [0] + " || Option 1: " + testing [1] + " || Option 2: " + testing [2] + " || Option 3: " + testing [3], testing[0].equals(testing[1]) 
 				|| testing[0].equals(testing[2])|| testing[0].equals(testing[3])); 
-		//assertTrue ("yes it works", Braille.getChoices() == 3);
 	}
 	
 	@Test
@@ -26,7 +25,6 @@ public class BraillerTester {
 		String [] testing = Braille.getChoices ();
 		assertFalse("Yes it works! Answer: " + testing [0] + " || Option 1: " + testing [1] + " || Option 2: " + testing [2] + " || Option 3: " + testing [3], testing[0].equals(testing[1]) 
 				|| testing[0].equals(testing[2])|| testing[0].equals(testing[3])); 
-		//assertTrue ("yes it works", Braille.getChoices() == 3);
 	}
 
 }
