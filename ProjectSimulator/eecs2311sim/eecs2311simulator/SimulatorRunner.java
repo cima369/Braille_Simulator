@@ -3,7 +3,7 @@ package eecs2311simulator;
 public class SimulatorRunner {
 
 	//dsads
-	// random changes
+	// random 
 	public static void main (String [] args)
 	{
 		Simulator sim = new Simulator (true, " does this work");
