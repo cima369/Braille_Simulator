@@ -10,7 +10,7 @@ public class Simulator extends JFrame {
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
 	private ArrayList <DrawingPanel> displays;
-	// temp 
+	// temp ssad
 	// sadsa
 	public Simulator ()
 	{
