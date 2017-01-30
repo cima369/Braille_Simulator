@@ -10,6 +10,7 @@ public class Simulator extends JFrame {
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
 	private ArrayList <DrawingPanel> displays;
+	// temp change
 	
 	public Simulator ()
 	{
@@ -34,7 +35,6 @@ public class Simulator extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
 	
 	private void setListener (JButton button)
 	{
@@ -105,6 +105,11 @@ public class Simulator extends JFrame {
 	public int getBrailleCellsSize ()
 	{
 		return cells.size ();
+	}
+	
+	public int getButtonsSize ()
+	{
+		return buttons.size ();
 	}
 	
 	private void display ()
