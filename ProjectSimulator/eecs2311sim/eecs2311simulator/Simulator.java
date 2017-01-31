@@ -36,7 +36,7 @@ public class Simulator extends JFrame {
 		setVisible(true);
 	}
 	
-	private void setListener (JButton button)
+	private void setListener (final JButton button)
 	{
 		button.addActionListener(new ActionListener()
 		{
@@ -96,6 +96,18 @@ public class Simulator extends JFrame {
 		display ();
 	}
 	
+	public void setCharToBraillePins (int brailleCellNum, char character)
+	{
+		if (cells.get(brailleCellNum).length == 8)
+		{
+			cells.set(brailleCellNum,Braille.charToBraille(true, character));
+		}
+		else
+		{
+			cells.set(brailleCellNum,Braille.charToBraille(false, character));
+		}
+		display ();
+	}
 	public boolean checkPinRaised (int brailleCellNum, int pinNum)
 	{
 		return cells.get(brailleCellNum)[pinNum];
