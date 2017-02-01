@@ -29,19 +29,19 @@ public class SimulatorTest {
 	public void testlowerPin() {
 		panel.raisePin(0, 1);
 		panel.raisePin(3, 7);
-		panel.raisePin(5, 3);
+		panel.raisePin(1, 3);
 		
 		assertEquals(panel.checkPinRaised(0, 1), true);
 		assertEquals(panel.checkPinRaised(3, 7), true);
-		assertEquals(panel.checkPinRaised(5, 3), true);
+		assertEquals(panel.checkPinRaised(1, 3), true);
 		
 		panel.lowerPin(0, 1);
 		panel.lowerPin(3, 7);
-		panel.lowerPin(5, 3);
+		panel.lowerPin(1, 3);
 		
 		assertEquals(panel.checkPinRaised(0, 1), false);
 		assertEquals(panel.checkPinRaised(3, 7), false);
-		assertEquals(panel.checkPinRaised(5, 3), false);
+		assertEquals(panel.checkPinRaised(1, 3), false);
 	}
 
 	@Test
@@ -74,19 +74,19 @@ public class SimulatorTest {
 		assertEquals(panel.checkPinRaised(3, 6), false);
 		assertEquals(panel.checkPinRaised(3, 7), false);
 	
-		panel.raisePin(5, 1);
-		panel.raisePin(5, 4);
-		panel.raisePin(5, 6);
-		panel.reset(5);
+		panel.raisePin(1, 1);
+		panel.raisePin(1, 4);
+		panel.raisePin(1, 6);
+		panel.reset(1);
 		
-		assertEquals(panel.checkPinRaised(5, 0), false);
-		assertEquals(panel.checkPinRaised(5, 1), false);
-		assertEquals(panel.checkPinRaised(5, 2), false);
-		assertEquals(panel.checkPinRaised(5, 3), false);
-		assertEquals(panel.checkPinRaised(5, 4), false);
-		assertEquals(panel.checkPinRaised(5, 5), false);
-		assertEquals(panel.checkPinRaised(5, 6), false);
-		assertEquals(panel.checkPinRaised(5, 7), false);
+		assertEquals(panel.checkPinRaised(1, 0), false);
+		assertEquals(panel.checkPinRaised(1, 1), false);
+		assertEquals(panel.checkPinRaised(1, 2), false);
+		assertEquals(panel.checkPinRaised(1, 3), false);
+		assertEquals(panel.checkPinRaised(1, 4), false);
+		assertEquals(panel.checkPinRaised(1, 5), false);
+		assertEquals(panel.checkPinRaised(1, 6), false);
+		assertEquals(panel.checkPinRaised(1, 7), false);
 	}
 	
 	@Test
