@@ -21,11 +21,11 @@ public class Simulator{
 	public Simulator (boolean sixOrEight, int cells, int buttons)
 	{
 		this (sixOrEight);
-		for (int i = 0; i < cells; i ++)
+		for (int i = 1; i < cells; i ++)
 		{
 			addCell (sixOrEight);
 		}
-		for (int i = 0; i < buttons; i ++)
+		for (int i = 1; i < buttons; i ++)
 		{
 			addButton ();
 		}
