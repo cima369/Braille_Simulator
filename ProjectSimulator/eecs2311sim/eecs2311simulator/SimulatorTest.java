@@ -16,7 +16,6 @@ public class SimulatorTest {
 		panel = new Simulator (true, 5, 2);
 		panel2 = new Simulator (true, 4, 1);
 		panel3 = new Simulator (true, 3, 3);
-		
     }
 	
 	@Test
