@@ -7,16 +7,11 @@ import org.junit.Test;
 
 public class SimulatorTest {
 	
-	Simulator panel = new Simulator ();
+	Simulator panel;
 	
 	@Before
 	public void setUp(  ) throws Exception {
-		panel.addCell(true);
-		panel.addCell(true);
-		panel.addCell(true);
-		panel.addCell(true);
-		panel.addCell(true);
-		panel.addCell(true);
+		panel = new Simulator (true, 5, 2);
     }
 		
 	@Test

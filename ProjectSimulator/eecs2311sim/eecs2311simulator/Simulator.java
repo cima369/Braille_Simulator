@@ -4,36 +4,46 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-@SuppressWarnings("serial")
-public class Simulator extends JFrame {
-
+public class Simulator{
+	
+	private JFrame sim;
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
 	private ArrayList <DrawingPanel> displays;
-	// temp ssad
-	// sadsa
+
 	public Simulator ()
 	{
 		this (true);
+		display ();
+
 	}
 	
-	public Simulator (boolean sixOrEight, String text)
+	public Simulator (boolean sixOrEight, int cells, int buttons)
 	{
 		this (sixOrEight);
-		buttons.get(0).setText(text);
+		for (int i = 0; i < cells; i ++)
+		{
+			addCell (sixOrEight);
+		}
+		for (int i = 0; i < buttons; i ++)
+		{
+			addButton ();
+		}
+		display ();
+
 	}
 	
 	public Simulator(boolean sixOrEight) 
 	{
+		sim = new JFrame ();
+		sim.setSize (850, 650);
+		sim.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		sim.setVisible(true);
 		cells = new ArrayList <boolean []> ();
 		buttons = new ArrayList <JButton> ();
 		displays = new ArrayList <DrawingPanel> ();
 		addCell (sixOrEight);
-		addButton ();
-		display ();
-		setSize (850, 650);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		addButton ();		
 	}
 	
 	private void setListener (final JButton button)
@@ -48,7 +58,7 @@ public class Simulator extends JFrame {
 	}
 	
 	
-	public void addCell (boolean sixOrEight)
+	private void addCell (boolean sixOrEight)
 	{
 		if (sixOrEight)
 		{
@@ -58,21 +68,13 @@ public class Simulator extends JFrame {
 		{
 			cells.add(new boolean [6]);
 		}
-		
 		displays.add(new DrawingPanel (displays.size()));
-		display ();
 	}
 
-	public void addButton ()
+	private void addButton ()
 	{
-		addButton("Option: " + (buttons.size() + 1));
-	}
-	
-	public void addButton (String text)
-	{
-		buttons.add(new JButton (text));
+		buttons.add(new JButton ("Option: " + (buttons.size() + 1)));
 		setListener(buttons.get(buttons.size() - 1));
-		display ();
 	}
 	
 	public void raisePin (int brailleCellNum, int pinNum)
@@ -126,9 +128,9 @@ public class Simulator extends JFrame {
 	
 	private void display ()
 	{
-		getContentPane().removeAll();
-		getContentPane().revalidate();
-		getContentPane().setLayout(new GridBagLayout ());
+		sim.getContentPane().removeAll();
+		sim.getContentPane().revalidate();
+		sim.getContentPane().setLayout(new GridBagLayout ());
 		
 		GridBagConstraints c = new GridBagConstraints ();
 		
@@ -141,7 +143,7 @@ public class Simulator extends JFrame {
 			c.weightx = 0.5;
 			c.gridy = 1;
 			c.gridx = i;
-			getContentPane().add(buttons.get(i), c);
+			sim.getContentPane().add(buttons.get(i), c);
 		}
 		
 		for (int j = 0; j < displays.size (); j ++)
@@ -152,12 +154,13 @@ public class Simulator extends JFrame {
 			c.weightx = 0.5;
 			c.gridy = 0;
 			c.gridx = j;
-			getContentPane().add(displays.get(j), c);
+			sim.getContentPane().add(displays.get(j), c);
 			displays.get(j).repaint();
 		}
 			
 	}
 	
+	@SuppressWarnings("serial")
 	private class DrawingPanel extends JPanel
 	{
 		private int num;

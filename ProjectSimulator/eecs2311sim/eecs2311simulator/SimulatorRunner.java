@@ -7,18 +7,11 @@ public class SimulatorRunner {
 	// change
 	public static void main (String [] args)
 	{
-		Simulator sim = new Simulator (true, " does this work");
-		sim.addCell(true);
-		sim.addCell(true);
-		sim.addCell(true);
-		sim.addCell(true);
-		sim.addCell(true);
+		Simulator sim = new Simulator (true, 4, 2);
 		
 		sim.raisePin(0, 0);
 		sim.raisePin(1, 3);
-		sim.addButton(" Hello ");
-		sim.addButton ();
-		sim.setCharToBraillePins(3, 'l');
+		sim.setCharToBraillePins(3, 'M');
 		try
 		{
 			Thread.sleep(3000);
