@@ -33,7 +33,7 @@ public class SimulatorTest {
 	}
 	
 	@Test
-	public void testraisePin() {
+	public void testRaisePin() {
 		panel.raisePin(0, 0);
 		panel.raisePin(1, 3);
 		panel.raisePin(3, 7);
@@ -44,7 +44,7 @@ public class SimulatorTest {
 	}
 	
 	@Test
-	public void testlowerPin() {
+	public void testRowerPin() {
 		panel.raisePin(0, 1);
 		panel.raisePin(3, 7);
 		panel.raisePin(1, 3);
@@ -63,7 +63,7 @@ public class SimulatorTest {
 	}
 
 	@Test
-	public void testreset(){
+	public void testReset(){
 		panel.raisePin(0, 1);
 		panel.raisePin(0, 4);
 		panel.raisePin(0, 6);
