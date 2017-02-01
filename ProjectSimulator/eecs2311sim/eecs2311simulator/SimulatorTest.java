@@ -8,12 +8,31 @@ import org.junit.Test;
 public class SimulatorTest {
 	
 	Simulator panel;
-	
+	Simulator panel2;
+	Simulator panel3;
+
 	@Before
 	public void setUp(  ) throws Exception {
 		panel = new Simulator (true, 5, 2);
-    }
+		panel2 = new Simulator (true, 4, 1);
+		panel3 = new Simulator (true, 3, 3);
 		
+    }
+	
+	@Test
+	public void testBrailleCellSize() {
+		assertEquals(panel.getBrailleCellsSize(), 5);
+		assertEquals(panel2.getBrailleCellsSize(), 4);
+		assertEquals(panel3.getBrailleCellsSize(), 3);
+	}
+	
+	@Test 
+	public void testButtonSize(){	
+		assertEquals(panel.getButtonsSize(), 2);
+		assertEquals(panel2.getButtonsSize(), 1);
+		assertEquals(panel3.getButtonsSize(), 3);
+	}
+	
 	@Test
 	public void testraisePin() {
 		panel.raisePin(0, 0);
@@ -142,6 +161,5 @@ public class SimulatorTest {
 	assertEquals(panel.checkPinRaised(4, 5), true);
 	assertEquals(panel.checkPinRaised(4, 6), true);
 	assertEquals(panel.checkPinRaised(4, 7), true);
-	
 	}
 }
