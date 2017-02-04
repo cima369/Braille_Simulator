@@ -2,7 +2,7 @@ package eecs2311simulator;
 
 public class SimulatorRunner {
 
-	// random 
+	// testing
 	// change
 	public static void main (String [] args)
 	{
