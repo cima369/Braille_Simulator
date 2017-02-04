@@ -4,6 +4,38 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+
+/**
+ * A simulator that was designed to simulate the hardware of a device that will be used to teach young, vision-impaired 
+ * adolescents how to read and understand Braille characters. <br>
+ * <br>
+ * The index of the cells start from 0 .. (number of cells - 1), where the total number of cells subtracted by 1 represents the last Braille cell
+ * displayed on the simulator. <br>
+ * The index of the JButtons start from 0 .. (number of JButtons - 1), where the total number of JButtons subtracted by 1 represent the last JButton
+ * displayed on the simulator. <br>
+ * <br>
+ * In addition, the numbering of the cells starts from the left-most cell. <br>
+ * The same applies to the JButtons, as numbering starts from the left-most JButton. <br>
+ * <br>
+ * For the pins of the Braille cells, the pin number starts at 0 which represents the top left pin while the bottom right pin represents the total number of
+ * pins subtracted by 1. <br>
+ * <br>
+ * A visual image is included for both the 6 and 8 pins to understand how the pin numbers work: <br>
+ *  &nbsp;&nbsp; <U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </U>		<br>
+ *  &nbsp;&nbsp; | &nbsp; 0 &nbsp;&nbsp; 1 &nbsp; | &nbsp;&nbsp;&nbsp; 8-pin Braille cell with corresponding pin numbering.	<br>
+ *  &nbsp;&nbsp; | &nbsp; 2 &nbsp;&nbsp; 3 &nbsp; |		<br>
+ *  &nbsp;&nbsp; | &nbsp; 4 &nbsp;&nbsp; 5 &nbsp; |		<br>
+ *  &nbsp;&nbsp; <U> | &nbsp; 6 &nbsp;&nbsp; 7 &nbsp; | </U>		<br>
+ *  <br>
+ *  <br>
+ *  &nbsp;&nbsp; <U>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </U>		<br>
+ *  &nbsp;&nbsp; | &nbsp; 0 &nbsp;&nbsp; 1 &nbsp; | &nbsp;&nbsp;&nbsp; 6-pin Braille cell with corresponding pin numbering.	<br>
+ *  &nbsp;&nbsp; | &nbsp; 2 &nbsp;&nbsp; 3 &nbsp; |		<br>
+ *  &nbsp;&nbsp; <U> | &nbsp; 4 &nbsp;&nbsp; 5 &nbsp; | </U>		<br>
+ *  <br>
+ * @author Team 3 of EECS 2311 Winter 2017
+ *
+ */
 public class Simulator{
 	
 	private JFrame sim;
@@ -11,6 +43,10 @@ public class Simulator{
 	private ArrayList <JButton> buttons;
 	private ArrayList <DrawingPanel> displays;
 
+	/**
+	 * Creates a JFrame GUI with one 8-pin Braille cell and one JButton. <br>
+	 * By default, all pins on the Braille cell are initially lowered.
+	 */
 	public Simulator ()
 	{
 		this (true);
@@ -18,21 +54,43 @@ public class Simulator{
 
 	}
 	
-	public Simulator (boolean sixOrEight, int cells, int buttons)
+	/**
+	 * Creates a JFrame GUI with cellsNum number of 8-pin or 6-pin Braille cells and buttonsNum number of JButtons. <br>
+	 * By default, all pins on the Braille cells are initially lowered.
+	 * 
+	 * @param sixOrEight Set to true for the Braille cells to be 8-pin or false for the Braille cells to be 6-pin
+	 * @param cellsNum Number of Braille cells to be displayed
+	 * @param buttonsNum Number of JButtons to be displayed
+	 * @throws IllegalArgumentException If cellsNum or buttonsNum is &lt; 1
+	 */
+	public Simulator (boolean sixOrEight, int cellsNum, int buttonsNum) throws IllegalArgumentException
 	{
 		this (sixOrEight);
-		for (int i = 1; i < cells; i ++)
+		if (cellsNum < 1 || buttonsNum < 1)
 		{
-			addCell (sixOrEight);
+			throw new IllegalArgumentException ("Error! Both cellsNum and buttonsNum have to be ingtegers >= 1.");
 		}
-		for (int i = 1; i < buttons; i ++)
+		else
 		{
-			addButton ();
+			for (int i = 1; i < cellsNum; i ++)
+			{
+				addCell (sixOrEight);
+			}
+			for (int i = 1; i < buttonsNum; i ++)
+			{
+				addButton ();
+			}
+			display ();
 		}
-		display ();
 
 	}
 	
+	/**
+	 * Creates a JFrame GUI with either one 8-pin or 6-pin Braille cell and one JButton. <br>
+	 * By default, all pins on the Braille cell are initially lowered.
+	 * 
+	 * @param sixOrEight Set to true for an 8-pin Braille cell or false for a 6-pin Braille cell
+	 */
 	public Simulator(boolean sixOrEight) 
 	{
 		sim = new JFrame ();
@@ -57,6 +115,43 @@ public class Simulator{
 		});
 	}
 	
+	/**
+	 * Changes the text of the JButton at the specified position.
+	 * @param buttonNum The index of the JButton to change the text of
+	 * @param text The string used to set the text
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
+	 */
+	public void setButtonText (int buttonNum, String text) throws IndexOutOfBoundsException
+	{
+		try
+		{
+			buttons.get(buttonNum).setText(text);
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getButtonsSize() - 1)+ ". Index: " + buttonNum +", Size: " + getButtonsSize());
+		}
+	}
+	
+	/**
+	 * Returns the text of the JButton at the specified position.
+	 * @param buttonNum The index of the JButton to get the text of
+	 * @return The text of the JButton
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
+	 */
+	public String getButtonText (int buttonNum) throws IndexOutOfBoundsException
+	{
+		try
+		{
+			return buttons.get(buttonNum).getText();
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getButtonsSize() - 1)+ ". Index: " + buttonNum +", Size: " + getButtonsSize());
+		}
+	}
 	
 	private void addCell (boolean sixOrEight)
 	{
@@ -77,53 +172,166 @@ public class Simulator{
 		setListener(buttons.get(buttons.size() - 1));
 	}
 	
-	public void raisePin (int brailleCellNum, int pinNum)
+	/**
+	 * Raises the pin of the specified pin at the specified Braille cell. <br>
+	 * @param brailleCellNum The index of the Braille cell that contains the pin to be raised
+	 * @param pinNum The index of the pin to raise
+	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
+	 * Or if the index of the pin is out of range (indexPin &lt; 0 || indexPin &gt;= 8) for 8 pin cells or (indexPin &lt; 0 || indexPin &gt;= 6) for 6 pin cells
+	 */
+	public void raisePin (int brailleCellNum, int pinNum)throws IndexOutOfBoundsException
 	{
-		cells.get(brailleCellNum)[pinNum] = true;
-		display ();
-	}
-	
-	public void lowerPin (int brailleCellNum, int pinNum)
-	{
-		cells.get(brailleCellNum)[pinNum] = false;
-		display ();
-	}
-	
-	public void reset (int brailleCellNum)
-	{
-		for (int i = 0; i < cells.get(brailleCellNum).length; i ++)
+		try
 		{
-			cells.get(brailleCellNum)[i] = false;
+			cells.get(brailleCellNum)[pinNum] = true;
+			display ();
 		}
-		display ();
-	}
-	
-	public void setCharToBraillePins (int brailleCellNum, char character)
-	{
-		if (cells.get(brailleCellNum).length == 8)
+		catch (IndexOutOfBoundsException e)
 		{
-			cells.set(brailleCellNum,Braille.charToBraille(true, character));
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1) +  ". <br> Or number of pins must be in the range of 0 .. 5 or 0 .. 7"
+							+ "for 6 or 8 pin cells respectively." );
 		}
-		else
-		{
-			cells.set(brailleCellNum,Braille.charToBraille(false, character));
-		}
-		display ();
+		
 	}
-	public boolean checkPinRaised (int brailleCellNum, int pinNum)
+	
+	/**
+	 * Lowers the pin of the specified pin at the specified Braille cell. <br>
+	 * @param brailleCellNum The index of the Braille cell that contains the pin to be lowered
+	 * @param pinNum The index of the pin to lower
+	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
+	 * Or if the index of the pin is out of range (indexPin &lt; 0 || indexPin &gt;= 8) for 8 pin cells or (indexPin &lt; 0 || indexPin &gt;= 6) for 6 pin cells
+	 */
+	public void lowerPin (int brailleCellNum, int pinNum) throws IndexOutOfBoundsException
 	{
-		return cells.get(brailleCellNum)[pinNum];
+		try
+		{
+			cells.get(brailleCellNum)[pinNum] = false;
+			display ();
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1) +  ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize() + ". <br> Or number of pins must be in the range of 0 .. 5 or 0 .. 7"
+							+ "for 6 or 8 pin cells respectively." );
+		}
 	}
 	
+	/** 
+	 * Lowers all the pins of the specified Braille cell, thereby resetting it back to its original state.
+	 *
+	 * @param brailleCellNum The index of the Braille cell to reset the pins to lowered
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
+	 */
+	public void reset (int brailleCellNum) throws IndexOutOfBoundsException
+	{
+		try
+		{
+			for (int i = 0; i < cells.get(brailleCellNum).length; i ++)
+			{
+				cells.get(brailleCellNum)[i] = false;
+			}
+			display ();
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1)+ ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize());
+		}
+		
+	}
 	
+	/**
+	 * Sets the corresponding Braille character for the specified letter for the specified Braille cell.
+	 * @param brailleCellNum The index of the Braille cell to display the Braille character
+	 * @param character The English letter to be displayed onto the Braille cell
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
+	 * @throws IllegalArgumentException If the input of character is not a valid letter of the English alphabet
+	 */
+	public void setCharToBraillePins (int brailleCellNum, char character) throws IndexOutOfBoundsException, IllegalArgumentException
+	{
+		try
+		{
+			if ((character < 65 || character > 90) && (character < 97 || character > 122 ))
+			{
+				throw new IllegalArgumentException ("Error! Input of char is not a valid letter of the English alphabet.");
+			}
+			if (cells.get(brailleCellNum).length == 8)
+			{
+				cells.set(brailleCellNum,Braille.charToBraille(true, character));
+			}
+			else
+			{
+				cells.set(brailleCellNum,Braille.charToBraille(false, character));
+			}
+			display ();
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1)+ ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize());
+		}
+	}
+	
+	/**
+	 * Checks to see if the specified pin number at the specified Braille cell is raised.
+	 * @param brailleCellNum The index of the Braille cell that contains the pin to be checked
+	 * @param pinNum The index of the pin to be checked
+	 * @return True if the specified pin is raised, false otherwise
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
+	 */
+	public boolean checkPinRaised (int brailleCellNum, int pinNum) throws IndexOutOfBoundsException
+	{
+		try
+		{
+			return cells.get(brailleCellNum)[pinNum];
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1)+ ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize());
+		}
+	}
+	
+	/**
+	 * Returns the total number of Braille cells that are being displayed.
+	 * @return The total number of Braille cells. Total number of Braille cells is &gt;= 1
+	 */
 	public int getBrailleCellsSize ()
 	{
 		return cells.size ();
 	}
 	
+	/**
+	 * Returns the total number of JButtons that are being displayed.
+	 * @return The total number of JButtons. Total number of JButtons is &gt;= 1
+	 */
 	public int getButtonsSize ()
 	{
 		return buttons.size ();
+	}
+	
+	/**
+	 * Change the size of the window of the simulator.
+	 * @param width The width of the window to be changed to
+	 * @param height The height of the window to be changed to
+	 * @throws IllegalArgumentException Width must be at least 600 and height must be at least 350
+	 */
+	public void setSize (int width, int height) throws IllegalArgumentException
+	{
+		try
+		{
+			if (width < 500 || height < 350)
+			{
+				throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 350. ");
+			}
+			sim.setSize(new Dimension (width, height));
+		}
+		catch (IllegalArgumentException e)
+		{
+			throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 350. ");
+
+		}
 	}
 	
 	private void display ()
