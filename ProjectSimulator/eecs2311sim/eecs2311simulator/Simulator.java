@@ -44,8 +44,8 @@ public class Simulator{
 	private ArrayList <DrawingPanel> displays;
 
 	/**
-	 * Creates a JFrame GUI with one 8-pin Braille cell and one JButton <br>
-	 * By default, all pins on the Braille cell are initially lowered
+	 * Creates a JFrame GUI with one 8-pin Braille cell and one JButton. <br>
+	 * By default, all pins on the Braille cell are initially lowered.
 	 */
 	public Simulator ()
 	{
@@ -58,9 +58,9 @@ public class Simulator{
 	 * Creates a JFrame GUI with cellsNum number of 8-pin or 6-pin Braille cells and buttonsNum number of JButtons. <br>
 	 * By default, all pins on the Braille cells are initially lowered.
 	 * 
-	 * @param sixOrEight Set to true for the Braille cells to be 8-pin or false for the Braille cells to be 6-pin.
-	 * @param cellsNum Number of Braille cells to be displayed.
-	 * @param buttonsNum Number of JButtons to be displayed.
+	 * @param sixOrEight Set to true for the Braille cells to be 8-pin or false for the Braille cells to be 6-pin
+	 * @param cellsNum Number of Braille cells to be displayed
+	 * @param buttonsNum Number of JButtons to be displayed
 	 * @throws IllegalArgumentException If cellsNum or buttonsNum is &lt; 1
 	 */
 	public Simulator (boolean sixOrEight, int cellsNum, int buttonsNum) throws IllegalArgumentException
@@ -86,8 +86,8 @@ public class Simulator{
 	}
 	
 	/**
-	 * Creates a JFrame GUI with either one 8-pin or 6-pin Braille cell and one JButton <br>
-	 * By default, all pins on the Braille cell are initially lowered
+	 * Creates a JFrame GUI with either one 8-pin or 6-pin Braille cell and one JButton. <br>
+	 * By default, all pins on the Braille cell are initially lowered.
 	 * 
 	 * @param sixOrEight Set to true for an 8-pin Braille cell or false for a 6-pin Braille cell
 	 */
@@ -116,7 +116,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Changes the text of the JButton at the specified position
+	 * Changes the text of the JButton at the specified position.
 	 * @param buttonNum The index of the JButton to change the text of
 	 * @param text The string used to set the text
 	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
@@ -135,7 +135,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Returns the text of the JButton at the specified position
+	 * Returns the text of the JButton at the specified position.
 	 * @param buttonNum The index of the JButton to get the text of
 	 * @return The text of the JButton
 	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
@@ -173,7 +173,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Raises the pin of the specified pin at the specified Braille cell <br>
+	 * Raises the pin of the specified pin at the specified Braille cell. <br>
 	 * @param brailleCellNum The index of the Braille cell that contains the pin to be raised
 	 * @param pinNum The index of the pin to raise
 	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
@@ -196,7 +196,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Lowers the pin of the specified pin at the specified Braille cell <br>
+	 * Lowers the pin of the specified pin at the specified Braille cell. <br>
 	 * @param brailleCellNum The index of the Braille cell that contains the pin to be lowered
 	 * @param pinNum The index of the pin to lower
 	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
@@ -218,7 +218,7 @@ public class Simulator{
 	}
 	
 	/** 
-	 * Lowers all the pins of the specified Braille cell, thereby resetting it back to its original state
+	 * Lowers all the pins of the specified Braille cell, thereby resetting it back to its original state.
 	 *
 	 * @param brailleCellNum The index of the Braille cell to reset the pins to lowered
 	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
@@ -242,7 +242,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Sets the corresponding Braille character for the specified letter for the specified Braille cell
+	 * Sets the corresponding Braille character for the specified letter for the specified Braille cell.
 	 * @param brailleCellNum The index of the Braille cell to display the Braille character
 	 * @param character The English letter to be displayed onto the Braille cell
 	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
@@ -274,7 +274,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Checks to see if the specified pin number at the specified Braille cell is raised
+	 * Checks to see if the specified pin number at the specified Braille cell is raised.
 	 * @param brailleCellNum The index of the Braille cell that contains the pin to be checked
 	 * @param pinNum The index of the pin to be checked
 	 * @return True if the specified pin is raised, false otherwise
@@ -294,7 +294,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Returns the total number of Braille cells that are being displayed
+	 * Returns the total number of Braille cells that are being displayed.
 	 * @return The total number of Braille cells. Total number of Braille cells is &gt;= 1
 	 */
 	public int getBrailleCellsSize ()
@@ -303,7 +303,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Returns the total number of JButtons that are being displayed
+	 * Returns the total number of JButtons that are being displayed.
 	 * @return The total number of JButtons. Total number of JButtons is &gt;= 1
 	 */
 	public int getButtonsSize ()
@@ -312,7 +312,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Change the size of the window of the simulator
+	 * Change the size of the window of the simulator.
 	 * @param width The width of the window to be changed to
 	 * @param height The height of the window to be changed to
 	 * @throws IllegalArgumentException Width must be at least 600 and height must be at least 350
