@@ -12,6 +12,9 @@ public class SimulatorRunner {
 		sim.raisePin(0, 0);
 		sim.raisePin(1, 3);
 		sim.setCharToBraillePins(3, 'M');
+		sim.setButtonText(1, "hello");
+	//	sim.lowerPin(4, 2);
+	//	sim.reset(5);
 		try
 		{
 			Thread.sleep(3000);
