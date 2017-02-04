@@ -2,7 +2,6 @@ package eecs2311simulator;
 
 public class SimulatorRunner {
 
-	//dsads
 	// random 
 	// change
 	public static void main (String [] args)

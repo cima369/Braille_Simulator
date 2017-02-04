@@ -86,10 +86,10 @@ public class Simulator{
 	}
 	
 	/**
-	 * Creates a JFrame GUI with either one 8-pin or 6-pin Braille cell and one JButton. <br>
-	 * By default, all pins on the Braille cell are initially lowered.
+	 * Creates a JFrame GUI with either one 8-pin or 6-pin Braille cell and one JButton <br>
+	 * By default, all pins on the Braille cell are initially lowered
 	 * 
-	 * @param sixOrEight Set to true for an 8-pin Braille cell or false for a 6-pin Braille cell.
+	 * @param sixOrEight Set to true for an 8-pin Braille cell or false for a 6-pin Braille cell
 	 */
 	public Simulator(boolean sixOrEight) 
 	{
