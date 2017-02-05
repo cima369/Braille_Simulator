@@ -315,21 +315,21 @@ public class Simulator{
 	 * Change the size of the window of the simulator.
 	 * @param width The width of the window to be changed to
 	 * @param height The height of the window to be changed to
-	 * @throws IllegalArgumentException Width must be at least 500 and height must be at least 350
+	 * @throws IllegalArgumentException Width must be at least 500 and height must be at least 500
 	 */
 	public void setSize (int width, int height) throws IllegalArgumentException
 	{
 		try
 		{
-			if (width < 500 || height < 350)
+			if (width < 500 || height < 500)
 			{
-				throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 350. ");
+				throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 500. ");
 			}
 			sim.setSize(new Dimension (width, height));
 		}
 		catch (IllegalArgumentException e)
 		{
-			throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 350. ");
+			throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 500. ");
 
 		}
 	}

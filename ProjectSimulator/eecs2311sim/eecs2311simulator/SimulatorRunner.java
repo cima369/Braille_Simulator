@@ -14,6 +14,7 @@ public class SimulatorRunner {
 		sim.setButtonText(1, "hello");
 	//	sim.lowerPin(4, 2);
 	//	sim.reset(5);
+		sim.setSize(500, 500);
 		try
 		{
 			Thread.sleep(3000);
