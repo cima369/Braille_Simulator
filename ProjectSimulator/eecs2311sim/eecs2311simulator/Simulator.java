@@ -321,7 +321,7 @@ public class Simulator{
 	{
 		try
 		{
-			if (width <= 500 || height <= 350)
+			if (width < 500 || height < 350)
 			{
 				throw new IllegalArgumentException ("Error! Width must be at least 500 and/or height must be at least 350. ");
 			}
