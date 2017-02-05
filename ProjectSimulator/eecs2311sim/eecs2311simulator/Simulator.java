@@ -312,6 +312,15 @@ public class Simulator{
 	}
 	
 	/**
+	 * Returns the size of the JFrame.
+	 * @return Size of the JFrame storing the visual elements
+	 */
+	public Dimension getSize ()
+	{
+		return sim.getSize();
+	}
+	
+	/**
 	 * Change the size of the window of the simulator.
 	 * @param width The width of the window to be changed to
 	 * @param height The height of the window to be changed to
