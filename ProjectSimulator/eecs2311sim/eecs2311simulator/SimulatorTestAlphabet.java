@@ -15,7 +15,7 @@ public class SimulatorTestAlphabet {
 	}
 
 	@Test
-	public void testsetCharToBraillePinsAtoM(){
+	public void testCharConvert1(){
 	
 	panel.setCharToBraillePins(0, 'a');
 	assertEquals(panel.checkPinRaised(0, 0), true);
@@ -149,7 +149,7 @@ public class SimulatorTestAlphabet {
 	}
 	
 	@Test
-	public void testsetCharToBraillePinsNtoZ(){
+	public void testCharConvert2(){
 		
 	panel.setCharToBraillePins(3, 'n');
 	assertEquals(panel.checkPinRaised(3, 0), false);
