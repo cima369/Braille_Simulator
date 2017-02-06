@@ -135,33 +135,39 @@ public class Simulator{
 	}
 	
 	/**
-	 * Raises the pin of the specified pin at the specified Braille cell. <br>
-	 * @param brailleCellNum The index of the Braille cell that contains the pin to be raised
-	 * @param pinNum The index of the pin to raise
-	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
-	 * Or if the index of the pin is out of range (indexPin &lt; 0 || indexPin &gt;= 8) for 8 pin cells or (indexPin &lt; 0 || indexPin &gt;= 6) for 6 pin cells
+	 * Checks to see if the specified pin number at the specified Braille cell is raised.
+	 * @param brailleCellNum The index of the Braille cell that contains the pin to be checked
+	 * @param pinNum The index of the pin to be checked
+	 * @return True if the specified pin is raised, false otherwise
+	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
 	 */
-	public void raisePin (int brailleCellNum, int pinNum)throws IndexOutOfBoundsException
+	public boolean checkPinRaised (int brailleCellNum, int pinNum) throws IndexOutOfBoundsException
 	{
 		try
 		{
-			cells.get(brailleCellNum)[pinNum] = true;
-			display ();
+			return cells.get(brailleCellNum)[pinNum];
 		}
 		catch (IndexOutOfBoundsException e)
 		{
 			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
-					(getBrailleCellsSize() - 1) +  ". <br> Or number of pins must be in the range of 0 .. 5 or 0 .. 7"
-							+ "for 6 or 8 pin cells respectively." );
+					(getBrailleCellsSize() - 1)+ ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize());
 		}
-		
+	}
+	
+	/**
+	 * Returns the total number of Braille cells that are being displayed.
+	 * @return The total number of Braille cells. Total number of Braille cells is &gt;= 1
+	 */
+	public int getBrailleCellsSize ()
+	{
+		return cells.size ();
 	}
 	
 	/**
 	 * Returns access to the individual JButton objects
 	 * @param buttonNum The index of the JButton to get
 	 * @return The JButton object at the specified position
-	 * @throws IndexOutOfBoundsException If the index is out of range (buttonNum &lt; 0 || buttonNum &gt;= getBrailleCellsSize ())
+	 * @throws IndexOutOfBoundsException If the index is out of range (buttonNum &lt; 0 || buttonNum &gt;= getButtonsSize ())
 	 */
 	public JButton getButton (int buttonNum) throws IndexOutOfBoundsException
 	{
@@ -174,6 +180,24 @@ public class Simulator{
 			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
 					(getButtonsSize() - 1) +  ". Index: " + buttonNum +", Size: " + getButtonsSize());
 		}
+	}
+	
+	/**
+	 * Returns the total number of JButtons that are being displayed.
+	 * @return The total number of JButtons. Total number of JButtons is &gt;= 1
+	 */
+	public int getButtonsSize ()
+	{
+		return buttons.size ();
+	}
+	
+	/**
+	 * Returns the size of the JFrame.
+	 * @return Size of the JFrame storing the visual elements
+	 */
+	public Dimension getSize ()
+	{
+		return sim.getSize();
 	}
 	
 	/**
@@ -197,6 +221,30 @@ public class Simulator{
 							+ "for 6 or 8 pin cells respectively." );
 		}
 	}
+	
+	/**
+	 * Raises the pin of the specified pin at the specified Braille cell. <br>
+	 * @param brailleCellNum The index of the Braille cell that contains the pin to be raised
+	 * @param pinNum The index of the pin to raise
+	 * @throws IndexOutOfBoundsException If the index is out of range (indexCell &lt; 0 || indexCell &gt;= getBrailleCellsSize ()) <br>
+	 * Or if the index of the pin is out of range (indexPin &lt; 0 || indexPin &gt;= 8) for 8 pin cells or (indexPin &lt; 0 || indexPin &gt;= 6) for 6 pin cells
+	 */
+	public void raisePin (int brailleCellNum, int pinNum)throws IndexOutOfBoundsException
+	{
+		try
+		{
+			cells.get(brailleCellNum)[pinNum] = true;
+			display ();
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getBrailleCellsSize() - 1) +  ". <br> Or number of pins must be in the range of 0 .. 5 or 0 .. 7"
+							+ "for 6 or 8 pin cells respectively." );
+		}
+		
+	}
+	
 	
 	/** 
 	 * Lowers all the pins of the specified Braille cell, thereby resetting it back to its original state.
@@ -254,52 +302,6 @@ public class Simulator{
 		}
 	}
 	
-	/**
-	 * Checks to see if the specified pin number at the specified Braille cell is raised.
-	 * @param brailleCellNum The index of the Braille cell that contains the pin to be checked
-	 * @param pinNum The index of the pin to be checked
-	 * @return True if the specified pin is raised, false otherwise
-	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getBrailleCellsSize ())
-	 */
-	public boolean checkPinRaised (int brailleCellNum, int pinNum) throws IndexOutOfBoundsException
-	{
-		try
-		{
-			return cells.get(brailleCellNum)[pinNum];
-		}
-		catch (IndexOutOfBoundsException e)
-		{
-			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
-					(getBrailleCellsSize() - 1)+ ". Index: " + brailleCellNum +", Size: " + getBrailleCellsSize());
-		}
-	}
-	
-	/**
-	 * Returns the total number of Braille cells that are being displayed.
-	 * @return The total number of Braille cells. Total number of Braille cells is &gt;= 1
-	 */
-	public int getBrailleCellsSize ()
-	{
-		return cells.size ();
-	}
-	
-	/**
-	 * Returns the total number of JButtons that are being displayed.
-	 * @return The total number of JButtons. Total number of JButtons is &gt;= 1
-	 */
-	public int getButtonsSize ()
-	{
-		return buttons.size ();
-	}
-	
-	/**
-	 * Returns the size of the JFrame.
-	 * @return Size of the JFrame storing the visual elements
-	 */
-	public Dimension getSize ()
-	{
-		return sim.getSize();
-	}
 	
 	/**
 	 * Changes the size of the window of the simulator.
