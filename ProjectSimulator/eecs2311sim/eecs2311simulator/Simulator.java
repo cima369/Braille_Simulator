@@ -321,7 +321,7 @@ public class Simulator{
 	}
 	
 	/**
-	 * Change the size of the window of the simulator.
+	 * Changes the size of the window of the simulator.
 	 * @param width The width of the window to be changed to
 	 * @param height The height of the window to be changed to
 	 * @throws IllegalArgumentException Width must be at least 500 and height must be at least 500
