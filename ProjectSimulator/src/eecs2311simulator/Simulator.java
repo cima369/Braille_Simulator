@@ -39,8 +39,10 @@ import java.util.*;
 public class Simulator{
 	
 	private JFrame sim;
+	private ArrayList <Character> buttonChar;
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
+	//private ArrayList <char> buttonChar;
 	private ArrayList <DrawingPanel> displays;
 
 	/**
