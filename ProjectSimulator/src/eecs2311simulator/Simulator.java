@@ -41,7 +41,6 @@ public class Simulator{
 	private JFrame sim;
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
-	//private ArrayList <char> buttonChar;
 	private ArrayList <DrawingPanel> displays;
 
 	/**
@@ -158,9 +157,23 @@ public class Simulator{
 		
 	}
 	
-	public JButton getButton (int buttonNum)
+	/**
+	 * Returns access to the individual JButton objects
+	 * @param buttonNum The index of the JButton to get
+	 * @return The JButton object at the specified position
+	 * @throws IndexOutOfBoundsException If the index is out of range (buttonNum &lt; 0 || buttonNum &gt;= getBrailleCellsSize ())
+	 */
+	public JButton getButton (int buttonNum) throws IndexOutOfBoundsException
 	{
-		return buttons.get(buttonNum);
+		try
+		{
+			return buttons.get(buttonNum);
+		}
+		catch (IndexOutOfBoundsException e)
+		{
+			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
+					(getButtonsSize() - 1) +  ". Index: " + buttonNum +", Size: " + getButtonsSize());
+		}
 	}
 	
 	/**
