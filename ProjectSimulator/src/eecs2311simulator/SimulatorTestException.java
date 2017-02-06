@@ -46,7 +46,7 @@ public class SimulatorTestException {
 		exception.expect(IllegalArgumentException.class);
 		panel = new Simulator (true, -2, -5);
 	}
-	
+/*	
 	@Test
 	public void testIndexOutOfBoundsSetButtonText(){
 		exception.expect(IndexOutOfBoundsException.class);
@@ -70,7 +70,7 @@ public class SimulatorTestException {
 		exception.expect(IndexOutOfBoundsException.class);
 		panel.setButtonText(-43, "L");
 	}
-	
+
 	@Test
 	public void testIndexOutOfBoundsGetButtonText(){
 		exception.expect(IndexOutOfBoundsException.class);
@@ -94,7 +94,7 @@ public class SimulatorTestException {
 		exception.expect(IndexOutOfBoundsException.class);
 		panel.getButtonText(-455);
 	}
-	
+*/
 	@Test
 	public void testIndexOutOfBoundsExceptionRaisePin(){
 		exception.expect(IndexOutOfBoundsException.class);
