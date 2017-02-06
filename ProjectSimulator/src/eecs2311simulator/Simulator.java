@@ -39,7 +39,6 @@ import java.util.*;
 public class Simulator{
 	
 	private JFrame sim;
-	private ArrayList <Character> buttonChar;
 	private ArrayList <boolean []> cells;
 	private ArrayList <JButton> buttons;
 	//private ArrayList <char> buttonChar;
@@ -112,47 +111,9 @@ public class Simulator{
 		{
 			public void actionPerformed (ActionEvent e)
 			{
-				button.setText("Has been clicked");
+				System.out.println ("This is the name of the button that was pressed: " + button.getText());
 			}
 		});
-	}
-	
-	/**
-	 * Changes the text of the JButton at the specified position.
-	 * @param buttonNum The index of the JButton to change the text of
-	 * @param text The string used to set the text
-	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
-	 */
-	public void setButtonText (int buttonNum, String text) throws IndexOutOfBoundsException
-	{
-		try
-		{
-			buttons.get(buttonNum).setText(text);
-		}
-		catch (IndexOutOfBoundsException e)
-		{
-			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
-					(getButtonsSize() - 1)+ ". Index: " + buttonNum +", Size: " + getButtonsSize());
-		}
-	}
-	
-	/**
-	 * Returns the text of the JButton at the specified position.
-	 * @param buttonNum The index of the JButton to get the text of
-	 * @return The text of the JButton
-	 * @throws IndexOutOfBoundsException If the index is out of range (index &lt; 0 || index &gt;= getButtonsSize())
-	 */
-	public String getButtonText (int buttonNum) throws IndexOutOfBoundsException
-	{
-		try
-		{
-			return buttons.get(buttonNum).getText();
-		}
-		catch (IndexOutOfBoundsException e)
-		{
-			throw new IndexOutOfBoundsException ("Error, incorrect input! Must be in the range of 0 .. " + 
-					(getButtonsSize() - 1)+ ". Index: " + buttonNum +", Size: " + getButtonsSize());
-		}
 	}
 	
 	private void addCell (boolean sixOrEight)
@@ -195,6 +156,11 @@ public class Simulator{
 							+ "for 6 or 8 pin cells respectively." );
 		}
 		
+	}
+	
+	public JButton getButton (int buttonNum)
+	{
+		return buttons.get(buttonNum);
 	}
 	
 	/**
