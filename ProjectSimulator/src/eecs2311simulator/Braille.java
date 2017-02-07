@@ -1,9 +1,9 @@
 package eecs2311simulator;
 
-public class Braille {
+public final class Braille {
 
-	private Braille() {
-		// TODO Auto-generated constructor stub
+	private Braille() 
+	{
 	}
 	
 	
@@ -82,7 +82,7 @@ public class Braille {
 				case 23: return new boolean[]{false, true, true, true, false, true};
 				case 24: return new boolean[]{true, true, false, false, true, true};
 				case 25: return new boolean[]{true, true, false, true, true, true};
-				default: return new boolean[]{true, false, false, true, true, true};
+					default: return new boolean[]{true, false, false, true, true, true};
 			}
 		}
 	}
