@@ -46,55 +46,43 @@ public class SimulatorTestException {
 		exception.expect(IllegalArgumentException.class);
 		panel = new Simulator (true, -2, -5);
 	}
-/*	
-	@Test
-	public void testIndexOutOfBoundsSetButtonText(){
-		exception.expect(IndexOutOfBoundsException.class);
-		panel.setButtonText(5, "B");
-	}
-	
-	@Test
-	public void testIndexOutOfBoundsSetButtonText2(){
-		exception.expect(IndexOutOfBoundsException.class);
-		panel.setButtonText(777, "T");
-	}
-	
-	@Test
-	public void testIndexOutOfBoundsSetButtonText3(){
-		exception.expect(IndexOutOfBoundsException.class);
-		panel.setButtonText(-2, "R");
-	}
-	
-	@Test
-	public void testIndexOutOfBoundsSetButtonText4(){
-		exception.expect(IndexOutOfBoundsException.class);
-		panel.setButtonText(-43, "L");
-	}
 
 	@Test
-	public void testIndexOutOfBoundsGetButtonText(){
+	public void testIndexOutOfBoundsExceptionGetButton(){
 		exception.expect(IndexOutOfBoundsException.class);
-		panel.getButtonText(5);
+		panel.getButton(2);
 	}
 	
 	@Test
-	public void testIndexOutOfBoundsGetButtonText2(){
+	public void testIndexOutOfBoundsExceptionGetButton2(){
 		exception.expect(IndexOutOfBoundsException.class);
-		panel.getButtonText(800);
+		panel.getButton(-1);
 	}
 	
 	@Test
-	public void testIndexOutOfBoundsGetButtonText3(){
+	public void testIndexOutOfBoundsExceptionGetButton3(){
 		exception.expect(IndexOutOfBoundsException.class);
-		panel.getButtonText(-1);
+		panel.getButton(499);
 	}
 	
 	@Test
-	public void testIndexOutOfBoundsGetButtonText4(){
+	public void testIndexOutOfBoundsExceptionGetButton4(){
 		exception.expect(IndexOutOfBoundsException.class);
-		panel.getButtonText(-455);
+		panel.getButton(-10000);
 	}
-*/
+	
+	@Test
+	public void testIndexOutOfBoundsExceptionGetButton5(){
+		exception.expect(IndexOutOfBoundsException.class);
+		panel.getButton(4).getText();
+	}
+	
+	@Test
+	public void testIndexOutOfBoundsExceptionGetButton6(){
+		exception.expect(IndexOutOfBoundsException.class);
+		panel.getButton(022).getText();
+	}
+	
 	@Test
 	public void testIndexOutOfBoundsExceptionRaisePin(){
 		exception.expect(IndexOutOfBoundsException.class);

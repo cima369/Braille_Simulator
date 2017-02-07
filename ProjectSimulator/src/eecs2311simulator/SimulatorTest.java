@@ -1,7 +1,6 @@
 package eecs2311simulator;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,7 +44,22 @@ public class SimulatorTest {
 		panel.raisePin(4, 2);
 		panel.raisePin(4, 4);
 		panel.raisePin(4, 6);
+		
+		panel5.getButton(0).setText("A");
+		panel5.getButton(1).setText("C");
+		panel5.getButton(2).setText("Z");
+		panel5.getButton(3).setText("F");
+		panel5.getButton(4).setText("U");
     }
+	
+	@Test
+	public void testGetButton(){
+		assertEquals(panel5.getButton(0).getText(), "A");
+		assertEquals(panel5.getButton(1).getText(), "C");
+		assertEquals(panel5.getButton(2).getText(), "Z");
+		assertEquals(panel5.getButton(3).getText(), "F");
+		assertEquals(panel5.getButton(4).getText(), "U");
+	}
 	
 	@Test
 	public void testBrailleCellSize() {
