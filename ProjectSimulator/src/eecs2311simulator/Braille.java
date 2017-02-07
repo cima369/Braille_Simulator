@@ -1,25 +1,56 @@
 package eecs2311simulator;
 
-public final class Braille {
+
+/**
+ * The class Braille contains the method that provides the mapping of any English alphabet letter to its corresponding Braille representation.
+ * <br> <br>
+ * The implementation of this class is used in the setCharToBraille method of the Simulator class, but is also provided publicly for any additional implementation. <br>
+ * Please note, the method of this class was meant to display the correct 6-pin or 8-pin Braille representation of any letter, in the form of a boolean array. <br>
+ * Where the index of the array corresponds to the pin number of the Braille cell, and that the state of true represents that the pin is raised and the state of false represents a lowered pin.
+ * 
+ * @author Team 3 of EECS 2311 Winter 2017
+ *
+ */
+public final class Braille 
+{
 
 	private Braille() 
 	{
 	}
 	
-	
-	public static boolean [] charToBraille (boolean sixOrEight, char character)
+	/**
+	 * Returns an array of Booleans, which is the Braille representation of the specified character for either a 6-pin or 8-pin Braille cell.
+	 * @param sixOrEight True for an 8-pin Braille representation or false for a 6-pin Braille representation
+	 * @param character The English alphabet letter to be represented in Braille
+	 * @return An array of Booleans
+	 * @throws IllegalArgumentException If the character is not a valid English alphabet letter, either entered as a capital or lower-case letter
+	 */
+	public static boolean [] charToBraille (boolean sixOrEight, char character) throws IllegalArgumentException
 	{
 		int characterToInt = 0;
-		if (character >= 97 && character <= 122)
+		try
 		{
-			characterToInt = character - 96;
-		}
-		else
-		{
-			if (character >= 65 && character <= 90)
+			
+			if ((character >= 97 && character <= 122) || (character >= 65 && character <= 90))
 			{
-				characterToInt = character - 64;
+				if (character >= 97 && character <= 122)
+				{
+					characterToInt = character - 96;
+				}
+				else
+				{
+					characterToInt = character - 64;
+				}
 			}
+			else
+			{
+				throw new IllegalArgumentException ("Error! The character entered must be an English alphabet letter, "
+						+ "either represented in upper or lower case!");
+			}
+		}
+		catch (IllegalArgumentException e)
+		{
+			
 		}
 		if (sixOrEight)
 		{
@@ -40,7 +71,7 @@ public final class Braille {
 				case 13: return new boolean[]{false, false, false, false, true, true, false, false};
 				case 14: return new boolean[]{false, false, false, false, true, false, false, true};
 				case 15: return new boolean[]{false, false, false, false, false, false, true, false};
-				case 16: return new boolean[]{false, false, false, true, false, true, true, false};
+			    case 16: return new boolean[]{false, false, false, true, false, true, true, false};
 				case 17: return new boolean[]{false, false, false, false, false, true, true, true};
 				case 18: return new boolean[]{false, false, false, true, false, false, true, false};
 				case 19: return new boolean[]{false, false, false, false, false, true, true, false};

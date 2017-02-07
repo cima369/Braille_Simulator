@@ -36,7 +36,8 @@ import java.util.*;
  * @author Team 3 of EECS 2311 Winter 2017
  *
  */
-public class Simulator{
+public class Simulator
+{
 	
 	private JFrame sim;
 	private ArrayList <boolean []> cells;
